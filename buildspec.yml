@@ -3,14 +3,18 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo Installing dependcies...
+      - echo Installing dependencies...
   pre_build:
     commands:
       - echo start prebuild and end it    
   build:
     commands:
       - echo Running buuild
-      - aws s3 sync . s3://doctor-website-s3bucket --delete
   post_build:
     commands:
       - echo Build completed successfully.
+
+artifacts:
+  files:
+    - "**/*"
+  base-directory: .  # Specify where artifacts are stored
